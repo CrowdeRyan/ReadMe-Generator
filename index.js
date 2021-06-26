@@ -48,7 +48,7 @@ const promptUser = () => {
       type: "checkbox",
       message: "Which license did you use?",
       name: "license",
-      choices: ["MIT", "", "", ""],
+      choices: ["MIT", "AAGPL", "GPLv3"],
     },
 
     // WHEN I enter my GitHub username
@@ -67,6 +67,13 @@ const promptUser = () => {
     },
   ]);
 };
+
+const MIT =
+  "[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)";
+const AAGPL =
+  "[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)";
+const GPLv3 =
+  "[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0) ";
 
 // WHEN I click on the links in the Table of Contents
 // THEN I am taken to the corresponding section of the README
