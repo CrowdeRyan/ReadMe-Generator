@@ -4,6 +4,8 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
 
+const writeFileAsync = util.promisify(fs.writeFile);
+
 const promptUser = () => {
   return inquirer.prompt([
     // WHEN I enter my project title
@@ -99,10 +101,8 @@ Questions: https://github.com/${answers.github}
 
 const build = () => {
   promptUser()
-    .then((answers) =>
-      writeFileAsync("./new/readme.md", generateReadme(answers))
-    )
-    .then(() => console.log("Successfully wrote to ./new/readme.md"))
+    .then((answers) => writeFileAsync("readme.md", generateReadme(answers)))
+    .then(() => console.log("Successfully wrote to readme.md"))
     .catch((err) => console.error(err));
 };
 
