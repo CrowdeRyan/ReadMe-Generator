@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/CrowdeRyan/ReadMe-Generator/issues"
   },
-  "homepage": "https://github.com/CrowdeRyan/ReadMe-Generator#readme"
+  "homepage": "https://github.com/CrowdeRyan/ReadMe-Generator#readme",
+  "dependencies": {
+    "inquirer": "^8.1.1"
+  }
 }
