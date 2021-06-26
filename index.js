@@ -80,7 +80,7 @@ const GPLv3 =
 
 const generateReadme = (answers) => `#${answers.title}
 Description: ${answers.description}
-  License: ${answers.license}
+${answers.license}
 
   Table of Contents
   <a href="#install">Installation</a>
@@ -96,3 +96,14 @@ Description: ${answers.description}
 Questions: https://github.com/${answers.github}
 - Email me: ${answers.email}
 `;
+
+const build = () => {
+  promptUser()
+    .then((answers) =>
+      writeFileAsync("./new/readme.md", generateReadme(answers))
+    )
+    .then(() => console.log("Successfully wrote to ./new/readme.md"))
+    .catch((err) => console.error(err));
+};
+
+build();
