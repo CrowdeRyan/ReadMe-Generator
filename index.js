@@ -13,3 +13,22 @@
 // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
 // WHEN I click on the links in the Table of Contents
 // THEN I am taken to the corresponding section of the README
+
+const generateReadme = (answers) => `#${answers.title}
+Description: ${answers.description}
+  License: ${answers.license}
+  
+  Table of Contents
+  <a href="#install">Installation</a>
+  <a href="#use">Usage</a>
+  <a href="#contribute">Contributing</a>
+  <a href="#tests">Tests</a>
+
+1. <h2 id="install">Installation:</h2> ${answers.install} 
+2.<h2 id="use"></h2> Usage: ${answers.uses} 
+3. <h2 id="contribute"></h2>Contributing: ${answers.guidelines}
+4.<h2 id="tests"></h2> Tests: ${answers.test}
+
+Questions: https://github.com/${answers.github}
+- Email me: ${answers.email}
+`;
