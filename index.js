@@ -12,7 +12,7 @@ const promptUser = () => {
     // THEN this is displayed as the title of the README
     {
       type: "input",
-      name: "Title",
+      name: "title",
       message: "What is the title of your project?",
     },
 
@@ -36,7 +36,7 @@ const promptUser = () => {
     {
       type: "input",
       name: "guidelines",
-      message: "Enter your guide lines for contribution:",
+      message: "Name any contributers to this project?",
     },
     {
       type: "input",
@@ -50,7 +50,7 @@ const promptUser = () => {
       type: "checkbox",
       message: "Which license did you use?",
       name: "license",
-      choices: ["MIT", "AAGPL", "GPLv3"],
+      choices: ["MIT", "AAGPL", "GPLv3", "None"],
     },
 
     // WHEN I enter my GitHub username
@@ -70,39 +70,60 @@ const promptUser = () => {
   ]);
 };
 
-const MIT =
-  "[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)";
-const AAGPL =
-  "[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)";
-const GPLv3 =
-  "[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0) ";
+const myBadges = (answers) => {
+  if (answers.license == "MIT") {
+    text =
+      "[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)";
+  } else if (answers.license == "AAGPL") {
+    text =
+      "[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)";
+  } else if (answers.license == "GPLv3") {
+    text =
+      "[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)";
+  } else {
+    text = " ";
+  }
+  return text;
+};
 
 // WHEN I click on the links in the Table of Contents
 // THEN I am taken to the corresponding section of the README
 
-const generateReadme = (answers) => `#${answers.title}
-Description: ${answers.description}
-${answers.license}
+const generateReadme = (answers) =>
+  `# ${answers.title}
 
-  Table of Contents
-  <a href="#install">Installation</a>
-  <a href="#use">Usage</a>
-  <a href="#contribute">Contributing</a>
-  <a href="#tests">Tests</a>
+## Description: ${answers.description}
 
-1. <h2 id="install">Installation:</h2> ${answers.install} 
-2.<h2 id="use"></h2> Usage: ${answers.uses} 
-3. <h2 id="contribute"></h2>Contributing: ${answers.guidelines}
-4.<h2 id="tests"></h2> Tests: ${answers.test}
+${myBadges(answers)}
 
-Questions: https://github.com/${answers.github}
-- Email me: ${answers.email}
+  ## Table of Contents
+
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Credits](#credits)
+  - [License](#license)
+  - [Questions](#questions)
+
+## 1. Installation: 
+    ${answers.install}  
+## 2. Usage: 
+    ${answers.uses}  
+## 3. Contributing: 
+    ${answers.guidelines}
+## 4. Tests: 
+    ${answers.test}
+
+### Questions: https://github.com/${answers.github}
+### Email me: ${answers.email}
 `;
 
 const build = () => {
   promptUser()
-    .then((answers) => writeFileAsync("readme.md", generateReadme(answers)))
-    .then(() => console.log("Successfully wrote to readme.md"))
+    .then((answers) => {
+      myBadges(answers);
+      writeFileAsync("myreadme.md", generateReadme(answers));
+    })
+    .then(() => console.log("Successfully wrote to myreadme.md"))
     .catch((err) => console.error(err));
 };
 
