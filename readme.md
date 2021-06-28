@@ -6,6 +6,8 @@ This is an application to create a readme.md file based on responses from an Inq
 
 Link to Website: https://crowderyan.github.io/ReadMe-Generator/
 
+Link to Video: [Readme Generator Walkthrough](https://drive.google.com/file/d/1_SEn_zYHeVgcbJqLoG9IfrV5AKl6Y7Ro/view?usp=sharing)
+
 ## 1. Generated Readme
 
 ![Myreadme template](/assets/images/readme-template.png)
