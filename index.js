@@ -114,7 +114,9 @@ ${myBadges(answers)}
     ${answers.test}
 
 ### Questions: https://github.com/${answers.github}
-### Email me: ${answers.email}
+### Email me:  <a href="mailto:${answers.email}" hspace="20">${
+    answers.email
+  }</a>
 `;
 
 const build = () => {
