@@ -4,7 +4,7 @@ This is an application to create a readme.md file based on responses from an Inq
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 
-Link to Website: https://crowderyan.github.io/ReadMe-Generator/
+Link to Readme: [Generated readme](myreadme.md)
 
 Link to Video: [Readme Generator Walkthrough](https://drive.google.com/file/d/1_SEn_zYHeVgcbJqLoG9IfrV5AKl6Y7Ro/view?usp=sharing)
 
